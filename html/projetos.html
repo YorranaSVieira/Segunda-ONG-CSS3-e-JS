@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossos Projetos</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- CABEÇALHO-->    
+<header>
+    <div class="logo-area">
+        <img src="../imagens/logoAB.png" alt="Logo da ONG AB" class="logo-ong">
+    </div>
+
+    <div class="menu-interativo">
+        <nav aria-label="Navegacao do Menu">
+            <ul>
+               <li><a href="index.html">INÍCIO</a></li>
+               <li><a href="projetos.html" aria-current="page">PROJETOS</a></li>
+               <li><a href="cadastro.html">FAÇA PARTE</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>    
+
+
+<main>
+
+    <!--HERO DA PÁGINA-->
+    <section class="hero-projetos">
+        <div class="textoprincipal">
+            <h1>Nossos Projetos</h1>
+        </div>
+        <div class="subtexto">
+            <p>Conheça as iniciativas que você pode apoiar como voluntário(a) ou doador(a).</p>
+        </div>
+    </section>
+
+<!--COMPONENTES DE FEEDBACK (demonstração) -->
+    <div class="alerta alerta-sucesso">
+        <div>
+            <strong>Projetos carregados com sucesso!</strong>
+            Conheça as iniciativas abaixo.
+        </div>
+    </div>
+
+    <input type="checkbox" id="modal-toggle" class="modal-toggle">
+    <label for="modal-toggle" class="abrir-modal">Ver detalhes de um projeto</label>
+    <div class="modal-overlay">
+        <div class="modal-caixa">
+            <label for="modal-toggle" class="modal-fechar">&times;</label>
+            <h3>Sobre o Código Azul</h3>
+            <p>Capacitação em programação e tecnologia para jovens e adultos autistas.</p>
+        </div>
+    </div>
+
+    <div class="toast">Novo projeto disponível!</div>
+
+<!--PROJETOS-->
+    <div class="projetos-grid">
+        <article class="projeto">
+            <img src="../imagens/projetoazul.jpg" alt="Várias pessoas em um ambiente corporativo">
+            <div>
+                <h2>Código Azul</h2>
+                <span class="badge badge-educacao">Educação</span>
+                <p>Capacitamos jovens e adultos autistas em programação, tecnologia e competências digitais, transformando talentos e interesses em oportunidades reais de desenvolvimento profissional e inserção no mercado de trabalho.
+                </p>
+            </div>
+        </article>
+
+        <article class="projeto">
+            <img src="../imagens/falamente.jpg" alt="Uma mulher sorrindo e olhando para uma criança utilizando o aplicativo">
+            <div>
+                <h2>Aplicativo FalaMente</h2>
+                <span class="badge badge-saude">Saúde</span>
+                <p>Desenvolvemos soluções digitais e ferramentas de comunicação alternativa que ampliam as possibilidades de expressão, facilitam a comunicação no dia a dia e oferecem mais autonomia, segurança e previsibilidade para pessoas autistas. 
+                </p>
+            </div>
+        </article>
+
+        <article class="projeto">
+            <img src="../imagens/virtual.jpg" alt="Um rapaz jovem utilizando óculos de realidade virtual">
+            <div>
+                <h2>Realidade Virtual Sense</h2>
+                <span class="badge badge-saude">Saúde</span>
+                <p>Utilizamos a realidade virtual para criar ambientes seguros e controlados que possibilitam a preparação para diferentes situações do cotidiano, contribuindo para o desenvolvimento de estratégias diante de dasafios sensoriais e para a conquista de maior independência
+                </p>
+            </div>
+        </article>
+
+        <article class="projeto">
+            <img src="../imagens/edtech.jpg" alt="Professores utilizando a ferramenta EdTech">
+            <div>
+                <h2> EdTech TEA </h2>
+                <span class="badge badge-educacao">Educação</span>
+                <p> Capacitamos educadores para utilizar tecnologias assistivas, ferramentas digitais e estratégias inclusivas, contribuindo para ambientes de aprendizagem mais acessíveis, acolhedores e respeitosos às diferentes formas de aprender.
+                </p>
+            </div>
+        </article>
+
+        <article class="projeto">
+            <img src="../imagens/edtech.jpg" alt="Professores utilizando a ferramenta EdTech">
+            <div>
+                <h2> EdTech TEA </h2>
+                <span class="badge badge-educacao">Educação</span>
+                <p> Capacitamos educadores para utilizar tecnologias assistivas, ferramentas digitais e estratégias inclusivas, contribuindo para ambientes de aprendizagem mais acessíveis, acolhedores e respeitosos às diferentes formas de aprender.
+                </p>
+            </div>
+        </article>
+
+        <article class="projeto">
+            <img src="../imagens/edtech.jpg" alt="Professores utilizando a ferramenta EdTech">
+            <div>
+                <h2> EdTech TEA </h2>
+                <span class="badge badge-educacao">Educação</span>
+                <p> Capacitamos educadores para utilizar tecnologias assistivas, ferramentas digitais e estratégias inclusivas, contribuindo para ambientes de aprendizagem mais acessíveis, acolhedores e respeitosos às diferentes formas de aprender.
+                </p>
+            </div>
+        </article>
+    </div>
+
+
+<!--FINAL-->
+    <div class="iniciativa">
+        <h3>Inclusão se constrói com oportunidades, conhecimento e colaboração.</h3>
+        <p> Cada projeto da AUTISTA BRASIL conta com pessoas voluntárias, parceiros e doadores que acreditam no potencial de uma socidade mais acessível, acolhedora e inclusiva. Juntos, transformamos tecnologia e conhecimento em oportunidades reais para pessoas autistas, promovendo autonomia, participação e novas possibilidades para o futuro.
+        </p>
+    </div>
+</main>
+
+<!--RODAPÉ-->
+<footer class="rodape">
+    <p>&copy; 2026 AB. Todos os direitos reservados</p>
+    <p><a href="mailto:contato@ab.org">contato@ab.org</a></p>
+</footer>
+
+</body>
+</html>

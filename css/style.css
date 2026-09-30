@@ -1,0 +1,1111 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/*VARIÁVEIS DE COR*/
+:root{
+    --verde-escuro: #237762;
+    --verde-mais-escuro: #14382f;
+    --verde-medio: #517c71;
+    --verde-fundo: #325f4e;
+    --verde-claro: #5cc2a0;
+    --accent: #103f2d;
+    --texto-escuro: #282e2e;
+    --branco: #ffffff;
+}
+
+/*ESTILIZANDO TODAS AS PÁGINAS*/
+
+body{
+    line-height: 1.6;
+    color: black;
+    background: #B8C6C6;
+    text-align: center;
+}
+
+header{
+   display: grid;
+   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+   align-items: center;
+   padding: 10px 40px;
+   height: 140px;
+   background: linear-gradient(135deg, var(--verde-medio) 0%, var(--verde-escuro) 100%);
+   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.logo-area{
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.menu-interativo{
+    grid-column: 2;
+    justify-self: center;
+}
+
+.logo-ong{
+    width: 138px;
+    height: auto;
+    display: block;
+}
+
+/*ESTILIZANDO O MENU DE NAVEGAÇÃO*/
+/*
+  Estrutura HTML esperada (apenas marcação + CSS3, sem JS):
+
+  <nav class="menu-interativo">
+    <input type="checkbox" id="menu-toggle" class="menu-toggle-input">
+    <label for="menu-toggle" class="menu-toggle-label">&#9776;</label>
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li class="tem-submenu">
+        <a href="projetos.html">Projetos</a>
+        <input type="checkbox" id="submenu-toggle-1" class="submenu-toggle-input">
+        <label for="submenu-toggle-1" class="submenu-toggle-label">&#9662;</label>
+        <ul class="submenu">
+          <li><a href="#">Educação</a></li>
+          <li><a href="#">Saúde</a></li>
+          <li><a href="#">Meio Ambiente</a></li>
+        </ul>
+      </li>
+      <li><a href="cadastro.html">Cadastre-se</a></li>
+    </ul>
+  </nav>
+*/
+
+.menu-toggle-input,
+.submenu-toggle-input{
+    display: none;
+}
+
+.menu-toggle-label{
+    display: none;
+    cursor: pointer;
+    font-size: 30px;
+    line-height: 1;
+    color: #ffffff;
+}
+
+.menu-interativo ul{
+    font-size: 18px;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, var(--verde-fundo) 0%, var(--verde-claro) 100%);
+    border: 0.1px solid rgb(2, 65, 46);
+    border-radius: 20px;
+}
+
+.menu-interativo li{
+    display: inline-block;
+    position: relative;
+    margin: 25px;
+    padding-right: 20px;
+    border-right: 2.5px solid rgba(0, 0, 0, 0.3);
+}
+
+.menu-interativo li:last-child{
+    border-right: none;
+    padding-right: 0;
+}
+
+.menu-interativo a{
+    text-decoration: none;
+    color: var(--texto-escuro);
+    transition: color 0.6s ease;
+    position: relative;
+    font-family: 'Google Sans';
+}
+
+.menu-interativo a:hover{
+    color: #ffffff;
+}
+
+.menu-interativo a::after{
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 5px;
+    background-color: var(--accent);
+    transition: width 0.6s ease;
+}
+
+.menu-interativo a:hover::after,
+.menu-interativo a[aria-current="page"]::after{
+    width: 100%;
+}
+
+/*SUBMENU (DROPDOWN) - resolução padrão (desktop)*/
+.submenu-toggle-label{
+    display: inline-block;
+    margin-left: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--texto-escuro);
+    transition: transform 0.3s ease;
+}
+
+.menu-interativo .submenu{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    margin: 12px 0 0;
+    padding: 10px 0;
+    background: linear-gradient(160deg, var(--verde-mais-escuro), var(--verde-escuro));
+    border-radius: 14px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    z-index: 20;
+}
+
+.menu-interativo .submenu li{
+    display: block;
+    margin: 0;
+    padding: 0;
+    border-right: none;
+}
+
+.menu-interativo .submenu a{
+    display: block;
+    padding: 10px 20px;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.menu-interativo .submenu a:hover{
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Abre via :hover (mouse) e :focus-within (teclado), sem depender de JS */
+.menu-interativo li.tem-submenu:hover .submenu,
+.menu-interativo li.tem-submenu:focus-within .submenu{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.menu-interativo li.tem-submenu:hover .submenu-toggle-label,
+.menu-interativo li.tem-submenu:focus-within .submenu-toggle-label{
+    transform: rotate(180deg);
+}
+
+/*HERO / TEXTO DE ABERTURA*/
+.hero{
+    background: linear-gradient(160deg, var(--verde-mais-escuro) 0%, var(--verde-escuro) 60%, var(--verde-claro) 100%);
+    color: #ffffff;
+    padding: 80px 20px 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.transformando{
+    font-family: 'Google Sans';
+    font-size: clamp(22px, 3.6vw, 40px);
+    font-weight: 700;
+    max-width: 100%;
+    margin: 0 auto 16px;
+    position: relative;
+    white-space: nowrap;
+}
+
+.hero-subtitulo{
+    font-family: 'Google Sans';
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.9;
+    position: relative;
+}
+
+/*QUEM SOMOS*/
+.quemsomos-wrapper{
+    background-color: var(--verde-fundo);
+    color: #ffffff;
+    border-radius: 24px;
+    padding: 20px;
+    max-width: 80%;
+    margin: -60px auto 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quemsomos-wrapper:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+}
+
+.quemsomos-texto{
+    flex: 1;
+    order: 1;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    line-height: 1.4;
+    font-family: 'Google Sans';
+}
+
+.quemsomosimg{
+    width: 50%;
+    height: auto;
+    flex-shrink: 0;
+    display: block;
+    border-radius: 16px;
+    order: 2;
+}
+
+/*ESTATÍSTICAS*/
+.stats{
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin: 20px auto 60px;
+    flex-wrap: wrap;
+}
+
+.stat{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Google Sans';
+}
+
+.stat strong{
+    font-size: 40px;
+    color: var(--verde-escuro);
+}
+
+.stat span{
+    font-size: 15px;
+    color: #555;
+}
+
+/*GRÁFICO DE IMPACTO (Chart.js)*/
+.grafico-impacto-wrapper{
+    max-width: 700px;
+    margin: 0 auto 60px;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.grafico-impacto-wrapper h3{
+    font-family: 'Google Sans';
+    color: var(--verde-escuro);
+    margin-bottom: 20px;
+}
+
+/* Necessário para o Chart.js: com "responsive: true", o canvas se
+   redimensiona para preencher este container. Sem uma altura fixa
+   aqui, o container tenta crescer conforme o próprio canvas — uma
+   dependência circular que faz o gráfico renderizar com altura zero. */
+.grafico-canvas-container{
+    position: relative;
+    height: 280px;
+    width: 100%;
+}
+
+/*DOAÇÃO / FAÇA PARTE*/
+.faca-parte{
+    text-decoration: underline solid var(--accent);
+    font-size: 30px;
+    font-family: 'Noto Sans Syriac Western';
+}
+
+.doe{
+    font-family: 'Google Sans';
+    text-align: center;
+    font-size: 30px;
+}
+
+.botao{
+    display: inline-flex;
+    width: 288px;
+    height: 80px;
+    font-size: 24px;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    color: #fcfafa;
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--verde-escuro), var(--accent));
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    margin: 20px auto 40px;
+    font-family: 'Google Sans';
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(92, 194, 160, 0.3);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.botao:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(92, 194, 160, 0.45);
+}
+
+.botao:focus{
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(92, 194, 160, 0.5);
+}
+
+.botao:active{
+    color: #000000;
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(92, 194, 160, 0.35);
+}
+
+.botao:disabled{
+    background: #9aa8a4;
+    color: #e2e6e5;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/*RODAPÉ*/
+.rodape{
+    background: linear-gradient(135deg, var(--verde-mais-escuro), var(--verde-escuro));
+    color: #ffffff;
+    padding: 30px;
+    margin-top: 20px;
+}
+
+.rodape a{
+    color: var(--verde-claro);
+}
+
+
+/*PÁGINA DE PROJETOS*/
+.hero-projetos{
+    background: linear-gradient(160deg, var(--verde-mais-escuro) 0%, var(--verde-escuro) 60%, var(--verde-claro) 100%);
+    color: #ffffff;
+    padding: 70px 20px 90px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-projetos::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.textoprincipal h1{
+    font-family: 'Google Sans';
+    font-size: 44px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.subtexto p{
+    font-family: 'Google Sans';
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.9;
+    position: relative;
+}
+
+/*===========================================
+  SISTEMA DE GRID - 12 COLUNAS (macroestrutura)
+=============================================*/
+
+/* Classe utilitária reaproveitável para qualquer seção do site */
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+    max-width: 1400px;
+    width: 92%;
+    margin: 0 auto;
+}
+
+/* CARDS DE PROJETO - agora construídos sobre o grid de 12 colunas */
+main{
+    counter-reset: projeto;
+}
+
+.projetos-grid{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 30px;
+    max-width: 1400px;
+    width: 92%;
+    /*
+      CORREÇÃO: antes este valor era -60px, um truque para o grid
+      "subir" e sobrepor visualmente o final do .hero-projetos. Isso
+      funcionava quando o grid vinha logo depois do hero no HTML.
+      Agora existe um .alerta de demonstração entre os dois — a
+      margem negativa passou a empurrar o grid POR CIMA do alerta,
+      cobrindo parte do seu texto e bloqueando cliques nos cards
+      naquela faixa sobreposta. Trocado para uma margem positiva,
+      removendo a sobreposição.
+    */
+    margin: 30px auto 50px;
+    padding: 0;
+}
+
+.projeto{
+    grid-column: span 6; /* 2 cards por linha em telas padrão (6+6=12) */
+    counter-increment: projeto;
+    display: flex;
+    flex-direction: column;
+    background: var(--verde-fundo);
+    color: #ffffff;
+    border-radius: 24px;
+    padding: 30px;
+    text-align: left;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projeto:focus-visible{
+    outline: 3px solid var(--verde-claro);
+    outline-offset: 3px;
+}
+
+.projeto:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+}
+
+.projeto::before{
+    content: "0" counter(projeto);
+    position: absolute;
+    top: -14px;
+    left: 30px;
+    background: var(--accent);
+    color: #ffffff;
+    font-family: 'Google Sans';
+    font-weight: 700;
+    font-size: 14px;
+    padding: 4px 16px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.projeto img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.projeto h2{
+    font-family: 'Google Sans';
+    font-size: 24px;
+    color: #61cea9;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.projeto p{
+    font-family: 'Google Sans';
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/*SEÇÃO FINAL - INICIATIVA*/
+.iniciativa{
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.iniciativa h3{
+    font-family: 'Google Sans';
+    font-size: 28px;
+    color: var(--verde-escuro);
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.iniciativa p{
+    font-family: 'Google Sans';
+    font-size: 20px;
+    color: #000000;
+    line-height: 1.6;
+    background: linear-gradient(270deg, #58b697, var(--verde-claro), var(--verde-medio), #58b697);
+    background-size: 400% 400%;
+    animation: gradiente-movel 8s ease infinite;
+    border: 4px solid rgb(11, 100, 51);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 700px;
+    margin: 0 auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+}
+
+.iniciativa p:hover{
+    transform: scale(1.02);
+    box-shadow: 0 12px 28px rgba(63, 124, 78, 0.3);
+}
+
+@keyframes gradiente-movel{
+    0%{ background-position: 0% 50%; }
+    50%{ background-position: 100% 50%; }
+    100%{ background-position: 0% 50%; }
+}
+
+/*PÁGINA DE CADASTRO*/
+.cadastro-main{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px 20px 80px;
+    background: linear-gradient(180deg, var(--verde-mais-escuro) 0%, var(--verde-escuro) 160px, transparent 160px);
+    text-align: center;
+}
+
+.cadastro-main h1{
+    font-family: 'Google Sans';
+    font-size: 34px;
+    font-weight: 700;
+    color: #ffffff;
+    max-width: 700px;
+    margin: 0 auto 14px;
+}
+
+.cadastro-main > p{
+    font-family: 'Google Sans';
+    font-size: 16px;
+    color: #ffffff;
+    opacity: 0.9;
+    margin-bottom: 40px;
+}
+
+.asterisco{
+    color: #ff6b6b;
+    font-weight: 700;
+}
+
+/*CARD DO FORMULÁRIO*/
+form{
+    background: #ffffff;
+    color: var(--texto-escuro);
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 24px;
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+fieldset{
+    border: 1px solid rgba(35, 119, 98, 0.25);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 30px;
+}
+
+legend{
+    font-family: 'Google Sans';
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--verde-escuro);
+    padding: 0 10px;
+}
+
+label{
+    display: block;
+    font-family: 'Google Sans';
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--texto-escuro);
+    margin-top: 18px;
+    margin-bottom: 6px;
+}
+
+label:first-of-type{
+    margin-top: 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="tel"]{
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-family: 'Google Sans';
+    font-size: 15px;
+    color: var(--texto-escuro);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus{
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(92, 194, 160, 0.3);
+}
+
+input::placeholder{
+    color: #999999;
+}
+
+/*VALIDAÇÃO VISUAL - feedback de preenchimento correto/incorreto*/
+/* :not(:placeholder-shown) evita mostrar erro em campo ainda vazio/intocado */
+input[type="text"]:not(:placeholder-shown):valid,
+input[type="email"]:not(:placeholder-shown):valid,
+input[type="date"]:not(:placeholder-shown):valid,
+input[type="tel"]:not(:placeholder-shown):valid{
+    border-color: #2fae6d;
+    box-shadow: 0 0 0 3px rgba(47, 174, 109, 0.15);
+}
+
+input[type="text"]:not(:placeholder-shown):invalid,
+input[type="email"]:not(:placeholder-shown):invalid,
+input[type="date"]:not(:placeholder-shown):invalid,
+input[type="tel"]:not(:placeholder-shown):invalid{
+    border-color: #e5484d;
+    box-shadow: 0 0 0 3px rgba(229, 72, 77, 0.15);
+}
+
+/*GRUPO DE RADIO BUTTONS*/
+.radio-grupo{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.radio-grupo label{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.radio-grupo input[type="radio"]{
+    accent-color: var(--accent);
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/*BOTÃO DE ENVIAR*/
+form button[type="submit"]{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 16px;
+    margin-top: 10px;
+    background: linear-gradient(135deg, var(--verde-escuro), var(--accent));
+    color: #ffffff;
+    font-family: 'Google Sans';
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(92, 194, 160, 0.3);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+form button[type="submit"]:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(92, 194, 160, 0.45);
+}
+
+form button[type="submit"]:focus{
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(92, 194, 160, 0.5);
+}
+
+form button[type="submit"]:active{
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(92, 194, 160, 0.35);
+}
+
+form button[type="submit"]:disabled{
+    background: #9aa8a4;
+    color: #e2e6e5;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/*===========================================
+  BREAKPOINTS RESPONSIVOS (5 cenários)
+=============================================*/
+
+/* 1) DESKTOP PANORÂMICO / TELAS ULTRAWIDE (>=1600px)
+   Aproveita o espaço extra: 3 cards de projeto por linha (4+4+4=12) */
+@media (min-width: 1600px){
+    .projeto{
+        grid-column: span 4;
+    }
+}
+
+/* 2) DESKTOP PADRÃO (até 1440px)
+   Reduz levemente o respiro lateral do container principal */
+@media (max-width: 1440px){
+    .grid-container,
+    .projetos-grid{
+        width: 94%;
+    }
+}
+
+/* 3) NOTEBOOK / DESKTOP PEQUENO (até 1024px)
+   Mantém 2 cards por linha, mas ajusta hero e espaçamentos verticais */
+@media (max-width: 1024px){
+    .hero,
+    .hero-projetos{
+        padding: 60px 20px 80px;
+    }
+
+    .quemsomos-wrapper{
+        max-width: 90%;
+    }
+}
+
+/* 4) TABLET (até 768px)
+   Cards de projeto passam a ocupar a linha inteira (12/12), o
+   formulário reduz o padding interno e o menu condensa em hambúrguer */
+@media (max-width: 768px){
+    .projetos-grid{
+        grid-template-columns: repeat(6, 1fr);
+        margin-top: 20px;
+    }
+
+    .projeto{
+        grid-column: span 6;
+    }
+
+    form{
+        padding: 24px;
+    }
+
+    .cadastro-main h1{
+        font-size: 26px;
+    }
+
+    /* MENU HAMBÚRGUER - ativado via :checked no checkbox oculto */
+    header{
+        grid-template-columns: 1fr auto;
+    }
+
+    .menu-toggle-label{
+        display: block;
+        grid-column: 2;
+        justify-self: end;
+    }
+
+    .menu-interativo{
+        grid-column: 1 / -1;
+        justify-self: stretch;
+        position: relative;
+    }
+
+    .menu-interativo ul{
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 90px;
+        left: 0;
+        width: 100%;
+        border-radius: 0 0 16px 16px;
+    }
+
+    .menu-toggle-input:checked ~ ul{
+        display: flex;
+    }
+
+    .menu-interativo li{
+        margin: 0;
+        padding: 16px 20px;
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    }
+
+    .menu-interativo li:last-child{
+        border-bottom: none;
+    }
+
+    /* Submenu vira acordeão dentro do item, controlado pelo próprio checkbox */
+    .menu-interativo .submenu{
+        position: static;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        min-width: 0;
+        margin: 10px 0 0;
+        background: rgba(0, 0, 0, 0.15);
+    }
+
+    .submenu-toggle-input:checked ~ .submenu{
+        display: flex;
+    }
+
+    .menu-interativo li.tem-submenu:hover .submenu{
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/*===========================================
+  COMPONENTES DE FEEDBACK - BADGES, ALERTAS,
+  MODAL E TOAST (100% CSS3, sem JS)
+=============================================*/
+
+/*BADGES - crachás de categorização semântica*/
+.badge{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-family: 'Google Sans';
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.badge-educacao{
+    background: #eafaf1;
+    color: #1e7a4c;
+    border: 1px solid #2fae6d;
+}
+
+.badge-saude{
+    background: #eaf3fb;
+    color: #245a86;
+    border: 1px solid #3b82c4;
+}
+
+.badge-ambiente{
+    background: #eafaf1;
+    color: #1e7a4c;
+    border: 1px solid #2fae6d;
+}
+
+.badge-destaque{
+    background: var(--accent);
+    color: #ffffff;
+    border: 1px solid var(--accent);
+}
+
+/*ALERTAS - caixas de aviso (sucesso, erro, info, atenção)*/
+.alerta{
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+    border-radius: 14px;
+    border-left: 5px solid;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    margin: 20px auto;
+    max-width: 700px;
+    text-align: left;
+    font-family: 'Google Sans';
+    font-size: 15px;
+    position: relative;
+    z-index: 10;
+}
+
+.alerta strong{
+    display: block;
+    margin-bottom: 4px;
+}
+
+.alerta-sucesso{
+    background: #eafaf1;
+    border-color: #2fae6d;
+    color: #1e7a4c;
+}
+
+.alerta-erro{
+    background: #fdecec;
+    border-color: #e5484d;
+    color: #a12b2b;
+}
+
+.alerta-info{
+    background: #eaf3fb;
+    border-color: #3b82c4;
+    color: #245a86;
+}
+
+.alerta-aviso{
+    background: #fff8e6;
+    border-color: #e0a800;
+    color: #8a6100;
+}
+
+/*MODAL - acionado via checkbox hack (sem JS)*/
+.modal-toggle{
+    display: none;
+}
+
+.modal-overlay{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal-toggle:checked ~ .modal-overlay,
+.modal-overlay.modal-aberto{
+    display: flex;
+}
+
+.modal-caixa{
+    background: #ffffff;
+    color: var(--texto-escuro);
+    max-width: 480px;
+    width: 90%;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: left;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    animation: modal-entrada 0.3s ease;
+}
+
+.modal-caixa h3{
+    font-family: 'Google Sans';
+    color: var(--verde-escuro);
+    margin-bottom: 12px;
+}
+
+.modal-caixa p{
+    font-family: 'Google Sans';
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.modal-fechar{
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 22px;
+    color: #999999;
+    line-height: 1;
+}
+
+.abrir-modal{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 26px;
+    background: linear-gradient(135deg, var(--verde-escuro), var(--accent));
+    color: #ffffff;
+    font-family: 'Google Sans';
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    margin-bottom: 60px;
+}
+
+@keyframes modal-entrada{
+    from{ opacity: 0; transform: translateY(-20px); }
+    to{ opacity: 1; transform: translateY(0); }
+}
+
+/*TOAST - notificação não obstrutiva, exibida com animação temporizada*/
+.toast{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, var(--verde-escuro), var(--accent));
+    color: #ffffff;
+    font-family: 'Google Sans';
+    font-size: 14px;
+    border-radius: 12px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: toast-entrada 0.4s ease forwards,
+               toast-saida 0.4s ease 3.6s forwards;
+    z-index: 200;
+}
+
+@keyframes toast-entrada{
+    from{ opacity: 0; transform: translateY(20px); }
+    to{ opacity: 1; transform: translateY(0); }
+}
+
+@keyframes toast-saida{
+    from{ opacity: 1; }
+    to{ opacity: 0; visibility: hidden; }
+}
+
+/* 5) MOBILE (até 480px)
+   Ajustes finos de tipografia e espaçamento para telas pequenas */
+@media (max-width: 480px){
+    .transformando{
+        white-space: normal;
+    }
+
+    .quemsomos-wrapper{
+        flex-direction: column;
+        max-width: 94%;
+    }
+
+    .quemsomosimg{
+        width: 100%;
+    }
+
+    .stats{
+        gap: 30px;
+    }
+
+    .botao{
+        width: 100%;
+        max-width: 288px;
+    }
+
+    .projeto{
+        padding: 20px;
+    }
+}

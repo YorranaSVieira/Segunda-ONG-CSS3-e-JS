@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AB</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Syriac+Western:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <div class="logo-area">
+        <img src="../imagens/logoAB.png" alt="Logo da ONG AB" class="logo-ong">
+    </div>
+
+    <div class="menu-interativo">
+        <nav aria-label="Navegacao do Menu">
+            <ul>
+               <li><a href="#/" data-link>INÍCIO</a></li>
+               <li><a href="#/projetos" data-link>PROJETOS</a></li>
+               <li><a href="#/cadastro" data-link>FAÇA PARTE</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main id="app"></main>
+
+<footer class="rodape">
+    <p>&copy; 2026 AB. Todos os direitos reservados</p>
+    <p><a href="mailto:contato@ab.org">contato@ab.org</a></p>
+</footer>
+
+<!-- Chart.js local: script comum (não-módulo), expõe "Chart" globalmente.
+     Precisa vir antes do módulo principal. -->
+<script src="../js/chart.umd.min.js"></script>
+
+<!-- Único ponto de entrada: main.js importa todos os outros módulos -->
+<script type="module" src="../js/main.js"></script>
+
+</body>
+</html>
