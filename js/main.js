@@ -37,4 +37,33 @@ containerApp.addEventListener("submit", function(evento){
     tratarSubmitCadastro(evento.target);
 });
 
+/* ====================================================================
+   FUNCIONALIDADE DE ALTO CONTRASTE (MODO ESCURO)
+   Como o botão está no header (fora do #app), ouvimos ele direto.
+==================================================================== */
+const themeToggleBtn = document.getElementById('theme-toggle');
+const body = document.body;
+
+// 1. Verifica no localStorage se o usuário já escolheu o modo escuro antes
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme === 'dark') {
+    body.classList.add('dark-mode');
+}
+
+// 2. Adiciona o evento de clique ao botão do header
+if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+        // Alterna a classe no body
+        body.classList.toggle('dark-mode');
+        
+        // 3. Salva a preferência atualizada no localStorage
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
+        }
+    });
+}
+
+// Inicia o roteamento do site
 iniciarRouter();

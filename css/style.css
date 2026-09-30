@@ -1109,3 +1109,76 @@ form button[type="submit"]:disabled{
         padding: 20px;
     }
 }
+
+/* =========================================
+   MODO ESCURO / ALTO CONTRASTE
+========================================= */
+
+/* Transição suave para a troca de cores */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Estilo do botão de alternar tema */
+.btn-tema {
+    background: var(--accent);
+    color: var(--branco);
+    border: 2px solid var(--branco);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Google Sans', sans-serif;
+    font-weight: 700;
+    margin-left: 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-tema:hover {
+    transform: scale(1.05);
+}
+
+/* Redefinição de variáveis quando o dark mode estiver ativo */
+body.dark-mode {
+    background: #121212;
+    color: #ffffff;
+    --verde-escuro: #000000;
+    --verde-mais-escuro: #000000;
+    --verde-medio: #1a1a1a;
+    --verde-fundo: #1c1c1c;
+    --verde-claro: #333333;
+    --accent: #ffcc00; /* Amarelo de alto contraste para botões/destaques */
+    --texto-escuro: #ffffff; /* Texto passa a ser branco */
+    --branco: #121212; 
+}
+
+/* Garante que os inputs do formulário não fiquem invisíveis no modo escuro */
+body.dark-mode input[type="text"],
+body.dark-mode input[type="email"],
+body.dark-mode input[type="date"],
+body.dark-mode input[type="tel"] {
+    background-color: #333333;
+    color: #ffffff;
+    border-color: #555555;
+}
+
+body.dark-mode input::placeholder {
+    color: #cccccc;
+}
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --primary-color: #0056b3;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #f4f4f4;
+  --primary-color: #4da3ff;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

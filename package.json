@@ -1,0 +1,26 @@
+{
+  "name": "segunda-ong-css3-e-js",
+  "version": "1.0.0",
+  "description": "Projeto acadêmico de uma SPA para a ONG fictícia **AUTISTA BRASIL (AB)**, organização sem fins lucrativos dedicada à inclusão social, à autonomia e à empregabilidade de pessoas no Espectro Autista (TEA). O site apresenta a ONG, seus projetos e um formulário de cadastro para voluntários e doadores.",
+  "main": "index.js",
+ "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YorranaSVieira/Segunda-ONG-CSS3-e-JS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/YorranaSVieira/Segunda-ONG-CSS3-e-JS/issues"
+  },
+  "homepage": "https://github.com/YorranaSVieira/Segunda-ONG-CSS3-e-JS#readme",
+  "devDependencies": {
+    "vite": "^8.3.1"
+  }
+}
