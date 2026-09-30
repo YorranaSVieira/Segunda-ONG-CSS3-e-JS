@@ -17,7 +17,7 @@ export function templateHome(){
                 <p class="quemsomos-texto">
                     A AUTISTA BRASIL (AB) é uma organização sem fins lucrativos dedicada a promover a inclusão social, a autonomia e a empregabilidade de pessoas dentro do Espectro Autista (TEA). Conectamos tecnologia, voluntários, doadores e parceiros estratégicos para desenvolver ferramentas inovadoras, capacitações profissionais e redes de apoio que transformam barreiras cotidianas em pontes para o desenvolvimento pleno da comunidade autista e de suas famílias.
                 </p>
-                <img src="../imagens/quemsomos.png" alt="Uma pessoa adulta em um ambiente corporativo utilizando o cordão do Autismo e o crachá de trabalho" class="quemsomosimg">
+                <img src="imagens/quemsomos.png" alt="Uma pessoa adulta em um ambiente corporativo utilizando o cordão do Autismo e o crachá de trabalho" class="quemsomosimg">
             </div>
 
             <div class="stats">
@@ -58,7 +58,7 @@ export function templateHome(){
 function cardProjeto(projeto, indice){
     return `
         <article class="projeto" data-projeto-index="${indice}" tabindex="0" role="button" aria-haspopup="dialog">
-            <img src="../imagens/${projeto.imagem}" alt="${projeto.alt}">
+            <img src="imagens/${projeto.imagem}" alt="${projeto.alt}">
             <div>
                 <h2>${projeto.titulo}</h2>
                 <span class="badge ${projeto.categoriaClasse}">${projeto.categoriaLabel}</span>
