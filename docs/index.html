@@ -3,34 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AB</title>
+    <title>AB - Início</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Syriac+Western:wght@100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
 </head>
 <body>
-
 <header>
     <div class="logo-area">
-        <img src="imagens/logoAB.png" alt="Logo da ONG AB" class="logo-ong">
-        <!-- Adicionando este botão logo após a imagem da logo -->
-        <button id="theme-toggle" class="btn-tema" aria-label="Alternar Alto Contraste">◐ Contraste</button>
+        <picture>
+            <source srcset="imagens/logoAB.webp" type="image/webp">
+            <img src="imagens/logoAB.png" alt="Logo da ONG AB" class="logo-ong">
+        </picture>
     </div>
 
     <div class="menu-interativo">
-        <nav aria-label="Navegacao do Menu">
+        <nav aria-label="Navegação do menu">
             <ul>
-               <li><a href="#/" data-link>INÍCIO</a></li>
-               <li><a href="#/projetos" data-link>PROJETOS</a></li>
-               <li><a href="#/cadastro" data-link>FAÇA PARTE</a></li>
+                <li><a href="index.html" aria-current="page">INÍCIO</a></li>
+                <li><a href="projetos.html">PROJETOS</a></li>
+                <li><a href="cadastro.html">FAÇA PARTE</a></li>
             </ul>
         </nav>
     </div>
 </header>
 
-<main id="app"></main>
+<main>
+    <section class="hero">
+        <h1 class="transformando">Transformando vidas com Inclusão e Tecnologia</h1>
+        <p class="hero-subtitulo">Tecnologia e acolhimento caminhando juntos para incluir, capacitar e transformar a vida de pessoas autistas.</p>
+    </section>
+
+    <section aria-label="Sobre a ONG e seu impacto">
+        <div class="quemsomos-wrapper">
+            <p class="quemsomos-texto">
+                A AUTISTA BRASIL (AB) é uma organização sem fins lucrativos dedicada a promover a inclusão social, a autonomia e a empregabilidade de pessoas dentro do Espectro Autista (TEA). Conectamos tecnologia, voluntários, doadores e parceiros estratégicos para desenvolver ferramentas inovadoras, capacitações profissionais e redes de apoio que transformam barreiras cotidianas em pontes para o desenvolvimento pleno da comunidade autista e de suas famílias.
+            </p>
+            <img src="imagens/quemsomos.png" alt="Pessoa adulta em ambiente corporativo usando cordão de identificação do autismo" class="quemsomosimg">
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <strong>500+</strong>
+                <span>Pessoas impactadas</span>
+            </div>
+            <div class="stat">
+                <strong>20</strong>
+                <span>Parceiros</span>
+            </div>
+            <div class="stat">
+                <strong>10</strong>
+                <span>Projetos ativos</span>
+            </div>
+        </div>
+
+        <div class="grafico-impacto-wrapper">
+            <h2>Nosso impacto em números</h2>
+            <div class="grafico-canvas-container">
+                <canvas id="graficoImpacto" aria-label="Gráfico do impacto da ONG"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <aside aria-label="Chamada para ação">
+        <section class="faca-parte">
+            <h2>Faça parte dessa mudança</h2>
+        </section>
+        <div class="doe">
+            <p>Seja um doador ou voluntário do Autista Brasil e ajude a promover a inclusão e a autonomia por meio da tecnologia.</p>
+        </div>
+        <a class="botao" href="cadastro.html">Quero fazer parte</a>
+    </aside>
+</main>
 
 <footer class="rodape">
     <p>&copy; 2026 AB. Todos os direitos reservados</p>
@@ -38,7 +83,9 @@
 </footer>
 
 <script src="js/chart.umd.min.js"></script>
-<script type="module" src="js/main.js"></script>
-
+<script type="module">
+    import { inicializarGraficoImpacto } from "./js/grafico.js";
+    inicializarGraficoImpacto();
+</script>
 </body>
 </html>

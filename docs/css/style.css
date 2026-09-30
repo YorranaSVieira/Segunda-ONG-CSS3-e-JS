@@ -457,7 +457,7 @@ main{
 
 .projetos-grid{
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(12, minmax(0, 1fr));
     gap: 30px;
     max-width: 1400px;
     width: 92%;
@@ -477,6 +477,7 @@ main{
 
 .projeto{
     grid-column: span 6; /* 2 cards por linha em telas padrão (6+6=12) */
+    min-width: 0;
     counter-increment: projeto;
     display: flex;
     flex-direction: column;
@@ -802,7 +803,7 @@ form button[type="submit"]:disabled{
    formulário reduz o padding interno e o menu condensa em hambúrguer */
 @media (max-width: 768px){
     .projetos-grid{
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(6, minmax(0, 1fr));
         margin-top: 20px;
     }
 

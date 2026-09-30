@@ -49,13 +49,11 @@
         </div>
     </div>
 
-    <input type="checkbox" id="modal-toggle" class="modal-toggle">
-    <label for="modal-toggle" class="abrir-modal">Ver detalhes de um projeto</label>
-    <div class="modal-overlay">
+    <div class="modal-overlay" id="modalProjeto" role="dialog" aria-modal="true" aria-labelledby="modalProjetoTitulo">
         <div class="modal-caixa">
-            <label for="modal-toggle" class="modal-fechar">&times;</label>
-            <h3>Sobre o Código Azul</h3>
-            <p>Capacitação em programação e tecnologia para jovens e adultos autistas.</p>
+            <span class="modal-fechar" id="fecharModalProjeto" role="button" tabindex="0" aria-label="Fechar detalhes">&times;</span>
+            <h3 id="modalProjetoTitulo"></h3>
+            <p id="modalProjetoDescricao"></p>
         </div>
     </div>
 
@@ -63,7 +61,7 @@
 
 <!--PROJETOS-->
     <div class="projetos-grid">
-        <article class="projeto">
+        <article class="projeto" data-projeto-index="0" tabindex="0" role="button" aria-haspopup="dialog">
             <img src="imagens/projetoazul.jpg" alt="Várias pessoas em um ambiente corporativo">
             <div>
                 <h2>Código Azul</h2>
@@ -73,7 +71,7 @@
             </div>
         </article>
 
-        <article class="projeto">
+        <article class="projeto" data-projeto-index="1" tabindex="0" role="button" aria-haspopup="dialog">
             <img src="imagens/falamente.jpg" alt="Uma mulher sorrindo e olhando para uma criança utilizando o aplicativo">
             <div>
                 <h2>Aplicativo FalaMente</h2>
@@ -83,7 +81,7 @@
             </div>
         </article>
 
-        <article class="projeto">
+        <article class="projeto" data-projeto-index="2" tabindex="0" role="button" aria-haspopup="dialog">
             <img src="imagens/virtual.jpg" alt="Um rapaz jovem utilizando óculos de realidade virtual">
             <div>
                 <h2>Realidade Virtual Sense</h2>
@@ -93,7 +91,7 @@
             </div>
         </article>
 
-        <article class="projeto">
+        <article class="projeto" data-projeto-index="3" tabindex="0" role="button" aria-haspopup="dialog">
             <img src="imagens/edtech.jpg" alt="Professores utilizando a ferramenta EdTech">
             <div>
                 <h2> EdTech TEA </h2>
@@ -103,7 +101,7 @@
             </div>
         </article>
 
-        <article class="projeto">
+        <article class="projeto" data-projeto-index="3" tabindex="0" role="button" aria-haspopup="dialog">
             <img src="imagens/edtech.jpg" alt="Professores utilizando a ferramenta EdTech">
             <div>
                 <h2> EdTech TEA </h2>
@@ -113,7 +111,7 @@
             </div>
         </article>
 
-        <article class="projeto">
+        <article class="projeto" data-projeto-index="3" tabindex="0" role="button" aria-haspopup="dialog">
             <img src="imagens/edtech.jpg" alt="Professores utilizando a ferramenta EdTech">
             <div>
                 <h2> EdTech TEA </h2>
@@ -139,5 +137,52 @@
     <p><a href="mailto:contato@ab.org">contato@ab.org</a></p>
 </footer>
 
+<script type="module">
+    import { abrirModalProjeto, fecharModalProjeto } from "./js/modal.js";
+
+    const gradeProjetos = document.querySelector(".projetos-grid");
+    const modal = document.getElementById("modalProjeto");
+    const botaoFechar = document.getElementById("fecharModalProjeto");
+    let cardAcionador = null;
+
+    function abrirDetalhes(card){
+        cardAcionador = card;
+        abrirModalProjeto(Number(card.dataset.projetoIndex));
+        botaoFechar.focus();
+    }
+
+    function fecharDetalhes(){
+        fecharModalProjeto();
+        if(cardAcionador) cardAcionador.focus();
+    }
+
+    gradeProjetos.addEventListener("click", function(evento){
+        const card = evento.target.closest("[data-projeto-index]");
+        if(card) abrirDetalhes(card);
+    });
+
+    gradeProjetos.addEventListener("keydown", function(evento){
+        const card = evento.target.closest("[data-projeto-index]");
+        if(card && (evento.key === "Enter" || evento.key === " ")){
+            evento.preventDefault();
+            abrirDetalhes(card);
+        }
+    });
+
+    modal.addEventListener("click", function(evento){
+        if(evento.target === modal || evento.target === botaoFechar) fecharDetalhes();
+    });
+
+    botaoFechar.addEventListener("keydown", function(evento){
+        if(evento.key === "Enter" || evento.key === " "){
+            evento.preventDefault();
+            fecharDetalhes();
+        }
+    });
+
+    document.addEventListener("keydown", function(evento){
+        if(evento.key === "Escape" && modal.classList.contains("modal-aberto")) fecharDetalhes();
+    });
+</script>
 </body>
 </html>
